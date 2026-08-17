@@ -1,0 +1,25 @@
+{
+    "name": "CoexCA03 API",
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "app",
+    "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+    "features": {
+        "ghcr.io/devcontainers/features/node:2.1.0": {
+            "nodeGypDependencies": true,
+            "version": "lts"
+        }
+    },
+    "forwardPorts": [
+        3001
+    ],
+    "onCreateCommand": "(cp .env.example .env || echo \".env creation failed\"); (pipenv install || echo \"pipenv install failed\");(bash database.sh || echo \"database.sh failed\")",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "esbenp.prettier-vscode",
+                "ms-python.autopep8"
+            ]
+        }
+    },
+    "remoteUser": "vscode"
+}
